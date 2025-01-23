@@ -29,7 +29,7 @@ Space Complexity: O(n), stores all characters plus metadata.
     
 def decode(s):
     if not s:
-        return ""
+        return []
     
     sizes = []
     response = []
@@ -61,5 +61,3 @@ def decode(s):
 Time Complexity: O(n), iterates through s once for parsing and slicing.
 Space Complexity: O(n), stores decoded strings matching input length.
 '''
-
-print(decode(encode(["we","say",":","yes","!@#$%^&*()"])))
