@@ -21,6 +21,11 @@ def encode(strs):
         string += s
         
     return string
+
+'''
+Time Complexity: O(n), processes each character once.
+Space Complexity: O(n), stores all characters plus metadata.
+'''
     
 def decode(s):
     if not s:
@@ -29,23 +34,32 @@ def decode(s):
     sizes = []
     response = []
     start = 0
+    temp_str = "" 
     
-    for i in range(len(s)): 
+    # Populate the sizes array and sets the start var to the index where the string we need to decode starts
+    for i in range(len(s)):
         if s[i] == "#":
             start = i + 1
             break
         
+        # Useing temp_str for the occurance of numbers > 10
         if s[i] == ",":
-            pass
+            sizes.append(int(temp_str))
+            temp_str = ""
         else:
-            sizes.append(int(s[i]))
+            temp_str += s[i]
         
-        
+    # Slices the string based on the sizes array
     for size in sizes:
+        print(sizes)
         response.append(s[start: start+size])
         start += size
             
     return response
-        
 
-print(decode(encode(["neet","code","love","you"])))
+'''
+Time Complexity: O(n), iterates through s once for parsing and slicing.
+Space Complexity: O(n), stores decoded strings matching input length.
+'''
+
+print(decode(encode(["we","say",":","yes","!@#$%^&*()"])))
