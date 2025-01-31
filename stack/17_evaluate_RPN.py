@@ -1,22 +1,25 @@
 def evalRPN(tokens):
+    # Stack to store operands
     stack = []
     
     for token in tokens:
-        if token in {"+", "-", "*", "/"}:  # Operator found
-            y, x = stack.pop(), stack.pop()  # Pop two operands
+        if token in {"+", "-", "*", "/"}:  # Check if token is an operator
+            y, x = stack.pop(), stack.pop()  # Pop the last two operands
             match token:
-                case "+":
+                case "+":  # Perform addition
                     stack.append(x + y)
-                case "-":
+                case "-":  # Perform subtraction
                     stack.append(x - y)
-                case "*":
+                case "*":  # Perform multiplication
                     stack.append(x * y)
-                case "/":
-                    stack.append(int(x / y))  # Ensure truncation towards zero
+                case "/":  # Perform division with truncation toward zero
+                    stack.append(int(x / y))
         else:
-            stack.append(int(token))  # Push number to stack
+            # Convert token to integer and push it to the stack
+            stack.append(int(token))
     
-    return stack[0]  # The final result is the only element left in the stack
+    # The last remaining value in the stack is the final result
+    return stack[0]
 
-# Test
-print(evalRPN(["4", "13", "5", "/", "+"]))  # Expected Output: 6
+# Space Complexity: O(n) - In the worst case, all numbers are pushed onto the stack.
+# Time Complexity: O(n) - Each token is processed once, with O(1) operations per token.
