@@ -1,3 +1,10 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
 def hasCycle(head):
     slow, fast = head, head
     # Check for edge case where the list is empty or has only one node
