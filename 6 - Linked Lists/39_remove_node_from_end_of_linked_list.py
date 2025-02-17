@@ -4,26 +4,21 @@
 #         self.val = val
 #         self.next = next
 
-class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(0, head)  # Dummy node to handle edge cases
-        left = dummy
-        right = head
-
-        # Move right pointer n steps ahead
-        while n > 0:
-            right = right.next
-            n -= 1
-
-        # Move both pointers until right reaches the end
-        while right:
-            left = left.next
-            right = right.next
-
-        # Remove the nth node
-        left.next = left.next.next
-
-        return dummy.next  # Return the head of the modified list
+def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    dummy = ListNode(0, head)  # Dummy node to handle edge cases
+    left = dummy
+    right = head
+    # Move right pointer n steps ahead
+    while n > 0:
+        right = right.next
+        n -= 1
+    # Move both pointers until right reaches the end
+    while right:
+        left = left.next
+        right = right.next
+    # Remove the nth node
+    left.next = left.next.next
+    return dummy.next  # Return the head of the modified list
 
 # Time Complexity: O(n)
 # - Moving the right pointer n steps takes O(n).
